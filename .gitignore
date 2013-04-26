@@ -1,0 +1,5 @@
+.DS_Store
+*.pyc
+node.js/node_modules
+node.js/server.js
+node.js/config.js

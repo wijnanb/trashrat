@@ -1,0 +1,16 @@
+{
+    "name" : "trash-app",
+    "description" : "An app that will remind you when to take out the trash",
+    "author" : "newpage",
+    "version" : "0.1.0",
+    "dependencies" : {
+        "coffee-script" : "1.6.1",
+        "eco" : "1.1",
+        "express": "3.1.x",
+        "log4js": "0.6.3",
+        "node.io": "0.4.14"
+    },
+    "engines" : {
+        "node":"0.8.x"
+    }
+}
