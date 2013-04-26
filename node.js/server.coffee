@@ -37,8 +37,9 @@ server.get '/list/ivago/:zone/:year/:month', (req, res, next) ->
 
     url =  config.scraper.ivago.base_url + zone + "/" + month
     calendar =
-        year: req.params.year
-        month: req.params.month
+        zone: zone
+        year: year
+        month: month
         pickups: []
 
     class Scraper extends nodeio.JobClass
