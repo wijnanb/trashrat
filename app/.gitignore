@@ -1,0 +1,14 @@
+# OS X Ignore this files:
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+Icon
+._*
+
+# project specific
+src/css/.sass-cache
+node_modules
+www/*
+src/js/coffee/settings_local.coffee

@@ -1,0 +1,79 @@
+fs = require 'fs'
+eco = require 'eco'
+path = require 'path'
+chokidar = require 'chokidar'
+
+task 'render:index', 'renders the index file with an updated timestamp to prevent caching', (options) ->
+    render_index()
+
+task 'render:templates', 'renders the index file with an updated timestamp to prevent caching', (options) ->
+    render_templates()
+
+task 'watch:eco', 'watch the eco files and recompile', (options) ->
+    watcher_index = chokidar.watch 'src/index.eco.html', {ignored: /^\./, persistent: true}
+    watcher_index.on 'change', (filename) ->
+        render_index()
+
+    watcher_templates = chokidar.watch 'src/templates', {ignored: /^\./, persistent: true}
+    watcher_templates.on 'change', (filename) ->
+        render_templates()
+        render_index() #re-render index, otherwise templates.js is cached
+
+render_index = () ->
+    template = fs.readFileSync 'src/index.eco.html', 'utf-8'
+    context =
+        version: new Date().toISOString().replace(/T|-|:/g, '').replace(/\..+/, '')
+    destination = 'www/index.html'
+
+    html = eco.render template, context
+
+    fs.writeFile destination, html, (err) ->
+        console.log if err then err else "render index.html"
+
+render_templates = () ->
+    console.log "render templates"
+    output = "window.Templates = window.Templates || {};\n\r";
+
+    try
+        walk 'src/templates', (files) ->
+            for file in files
+                p = /([^//]*)(\.eco)/
+                matches = file.match(p)
+
+                if matches.length > 1
+                    name = matches[1]
+                    raw_data = fs.readFileSync file
+                    template = eco.compile String(raw_data)
+                    output += "window.Templates['#{name}'] = " + template.toString() + ";\n\r"
+                    console.log "  #{file} -> Templates.#{name}()"
+                else
+                    console.log "  can't parse name from #{file}"
+
+            templates_file = 'www/js/templates.js'
+            fs.writeFileSync templates_file, output
+            
+    catch error
+        console.error "Parsing error in templates", error
+
+
+# parallel directory walk (results are not in the correct order, but callback is only called once for all files)
+walk = (dir, callback=->) ->
+    result = []
+    fs.readdir dir, (err, list) ->
+        return callback(null, err) if err
+
+        pending = list.length;
+        return callback(result) unless pending
+
+        list.forEach (file) ->
+            abs_file = path.join(dir,file)
+            fs.stat abs_file, (err, stat) ->
+                if stat && stat.isDirectory()
+                    walk abs_file, (res, err) ->
+                        result = result.concat(res)
+                        pending--
+                        callback(result) unless pending
+                else
+                    result.push abs_file unless file.match(/^\./gi) # exclude hidden files
+                    pending--
+                    if pending == 0 then callback(result)

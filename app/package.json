@@ -1,0 +1,15 @@
+{
+    "name" : "trahsrat",
+    "description" : "",
+    "author" : "newpage",
+    "version" : "0.1.0",
+    "dependencies" : {
+        "coffee-script" : ">1.4.x",
+        "eco" : "1.1",
+        "async": "0.2.9",
+        "chokidar": "0.6.2"
+    },
+    "engines" : {
+        "node":"0.10.17"
+    }
+}
