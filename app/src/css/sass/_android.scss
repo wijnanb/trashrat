@@ -1,0 +1,12 @@
+.android2, .android4 {
+    @media screen
+      and (min-width: 768px) {
+        html {
+            zoom: normal; /* zooming is sooooo slow on android */
+        }
+    }
+}
+
+.android2 {
+    @import "windowscroll";
+}

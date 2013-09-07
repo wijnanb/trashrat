@@ -1,0 +1,18 @@
+#app {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    overflow: hidden;
+}
+#pageManager {
+    position: relative;
+    overflow: hidden;
+}
+.page {
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    overflow: hidden;
+    padding-bottom: 59px; // compensate for the height of the header
+    min-height: 436px;
+}
