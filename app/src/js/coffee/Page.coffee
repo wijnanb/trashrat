@@ -1,19 +1,8 @@
 window.Page = Backbone.Model.extend
     defaults:
         position: 1
-        html: """<div class="loader"></div>"""
 
     initialize: () ->
-        @loader_html = @get('html')
-
-        if config.login_required
-            unless @no_login_required?
-                unless config.token?
-                    console.log "login is required to access this page", JSON.stringify @get('link')
-                    _.delay =>
-                        app.navigate config.uri.login
-                    , 600
-                    return
 
     isActive: () ->
         @get("position") is 0
@@ -30,12 +19,11 @@ window.PageCollection = Backbone.Collection.extend
 
 window.PageView = Backbone.View.extend
     className: "page"
+    template: Templates.stub
 
     initialize: () ->
         _.bindAll this
-
         @model.on "change:position", @onChangePosition
-        @model.on "change:html", @render
 
     onChangePosition: () ->
         _.delay () =>     # wait for 1 frame
@@ -68,14 +56,11 @@ window.PageView = Backbone.View.extend
         @$el.toggleClass "active", @model.isActive()
 
     render: () ->
-        if @model.get('link')? then @$el.addClass @model.get('link').type
-
         contents = $("<div class='contents'></div>")
-        contents.append @model.get("html")
-
+        contents.append @template()
         @$el.html contents
 
-        @pageSpecificRender() unless @model.get('html') is @model.loader_html
+        @pageSpecificRender()
 
         Fixes.iPhoneOverflowScroll @$el, contents
         @updatePosition()
