@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- CSS: Vendor Includes -->
-        <link rel="stylesheet" href="css/vendors/bootstrap-3.0.0.css">
+        <!--<link rel="stylesheet" href="css/vendors/bootstrap-3.0.0.css">-->
        
         <!-- CSS: Includes -->
         <link rel="stylesheet" href="css/main.css?v=<%= @version %>">
@@ -22,6 +22,14 @@
         <script src="js/vendors/async-0.2.5.js"></script>
     </head>
     <body>
-        <h1>Hello TrashRat</h1>
+        <div id="app">
+            <nav id="navbar" class="navbar" role="navigation">
+                <div id="menu-button" class="menu-button"></div>
+                <div class="title">
+                    TrashRat
+                    <div class="trashrat-icon" />
+                </div>
+            </nav>
+        </div> <!-- /#app -->
     </body>
 </html>
