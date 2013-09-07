@@ -48,7 +48,7 @@ window.App = Backbone.Model.extend
             @openFirstPage()
 
     openFirstPage: ->
-        last_position = false#Cache.readFromLocalStorage "last_position"
+        last_position = Cache.readFromLocalStorage "last_position"
         startup_hash = @get('startup_hash')
 
         if startup_hash

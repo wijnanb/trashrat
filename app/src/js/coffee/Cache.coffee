@@ -1,10 +1,10 @@
 window.Cache = (->
     readFromLocalStorage = (id) ->
         try
-            cached_response = localStorage[id]
-            unless cached_response?
+            value = localStorage[id]
+            unless value?
                 return false
-            return cached_response
+            return value
         catch error
             console.warn "localStorage not available", error
             return false

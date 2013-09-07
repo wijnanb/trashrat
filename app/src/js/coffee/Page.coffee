@@ -11,9 +11,9 @@ window.Page = Backbone.Model.extend
 window.PageCollection = Backbone.Collection.extend
     model: Page
 
-    hasPage: (link) ->
-        uriList = @map (element, index) -> $.param element.get "link"
-        index = _.indexOf uriList, $.param link
+    hasPage: (uri) ->
+        uriList = @pluck("uri")
+        index = _.indexOf uriList, uri
 
         if index is -1 then false else index
 
@@ -57,7 +57,8 @@ window.PageView = Backbone.View.extend
 
     render: () ->
         contents = $("<div class='contents'></div>")
-        contents.append @template()
+        contents.append @template
+            uri: @model.get('uri')
         @$el.html contents
 
         @pageSpecificRender()
