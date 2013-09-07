@@ -7,9 +7,6 @@
         <meta name="description" content="Reminds you when it's time to take out the trash.">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- CSS: Vendor Includes -->
-        <!--<link rel="stylesheet" href="css/vendors/bootstrap-3.0.0.css">-->
-       
         <!-- CSS: Includes -->
         <link rel="stylesheet" href="css/main.css?v=<%= @version %>">
 
@@ -17,9 +14,16 @@
         <script src="js/vendors/jquery-2.0.3.js"></script>
         <script src="js/vendors/underscore-1.4.4.js"></script>
         <script src="js/vendors/backbone-1.0.0.js"></script>
-        <script src="js/vendors/backbone-super.js"></script>
-        <script src="js/vendors/bootstrap-3.0.0.js"></script>
         <script src="js/vendors/async-0.2.5.js"></script>
+
+        <!-- Application code -->
+        <script src="js/config.js"></script>
+        <script src="js/Fixes.js"></script>
+        <script src="js/Cache.js"></script>
+        <script src="js/Router.js"></script>
+        <script src="js/Page.js"></script>
+        <script src="js/PageManager.js"></script>
+        <script src="js/app.js"></script>
     </head>
     <body>
         <div id="app">
@@ -30,6 +34,7 @@
                     <div class="trashrat-icon" />
                 </div>
             </nav>
+            <div id="pageManager"></div>
         </div> <!-- /#app -->
     </body>
 </html>
