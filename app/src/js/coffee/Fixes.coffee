@@ -5,6 +5,8 @@ window.Fixes = (->
 
     return public_functions =
 
+        headerHeight: -> headerHeight
+
         detectPlatform: ->
             window.config.platform =
                 if navigator.userAgent.match(/android 4/i) then "android4"

@@ -44,4 +44,5 @@ copy:
 	cp -r src/css/vendors www/css/vendors
 	cp -r src/css/img www/css/img
 	cp -r src/fonts www
+	cp -r data www
 	

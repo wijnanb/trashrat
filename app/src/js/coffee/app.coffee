@@ -31,6 +31,8 @@ window.App = Backbone.Model.extend
             @router = new Router()
             Backbone.history.start()
 
+            @streetManager = new StreetManager
+
             @pageManager = new PageManager router: @router
             @pageManagerView = new PageManagerView
                 model: @pageManager

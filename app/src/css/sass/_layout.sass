@@ -109,9 +109,10 @@ body.desktop #app
     overflow-y: scroll
     -webkit-overflow-scrolling: touch
     overflow-scrolling: touch
-    //@include transition-duration(400ms)
+    @include transition-duration(400ms)
     background-color: $white
     display: none
+    opacity: 0
 
 .street.page
     .searchbox
@@ -126,11 +127,15 @@ body.desktop #app
     .results
         width: 100%
         margin-top: 42px
-        .search-result
+        .search-result, .no-results
             padding: 20px 10px
             margin: 3px 3px 0
             background-color: #EEE
 
+        .no-results
+            text-align: center
+    
+            
 
 
 
