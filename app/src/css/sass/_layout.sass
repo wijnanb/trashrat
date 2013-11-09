@@ -31,6 +31,9 @@ input, textarea
     +border-radius(0)
     +box-sizing(border-box)
     text-align: left
+    &[type="time"]::-webkit-clear-button,
+    &[type="time"]::-webkit-inner-spin-button
+        display: none
 
 button
     background-color: $green
@@ -190,6 +193,72 @@ body.desktop #app
         .no-results
             text-align: center
     
+
+.reminder.page
+    .group
+        margin: 0 0 20px
+        label
+            display: block
+            margin: 5px 0 6px
+        .item
+            position: relative
+            width: 100%
+            background-color: $green-darker
+            cursor: pointer
+            .legend
+                padding: 14px 14px 10px
+                background-color: $grey
+                color: #3f3d3d
+                font-size: 13px
+                text-transform: uppercase
+                &.time
+                    input[type="time"]
+                        position: absolute
+                        top: 0
+                        left: 0
+                        right: 0
+                        bottom: 0
+                        z-index: 1
+                            
+                        background: rgba(0, 0, 0, 0)
+                        border: none
+                        outline: none
+                        text-transform: none
+                        font-size: 18px
+                        padding: 11px 14px 7px
+                        color: $white
+
+
+            .checkbox, .pencil
+                position: absolute
+                top: 0
+                right: 0
+                background-color: $grey-darker
+                width: 62px
+                height: 100%
+                
+            &.selected
+                background-color: $green-darker
+                .legend
+                    color: $white
+                    background-color: $green
+                .checkbox
+                    background-color: $green-darker
+                    background-image: image-url('checkmark@2x.png')
+                    background-size: 20px 19px
+                    background-repeat: no-repeat
+                    background-position: right 21px top 9px
+                .pencil
+                    background-color: $green-darker
+                    background-image: image-url('pencil@2x.png')
+                    background-size: 20px 19px
+                    background-repeat: no-repeat
+                    background-position: right 21px top 8px
+    .next
+        margin-top: 30px
+        margin-bottom: 50px
+            
+
             
 
 

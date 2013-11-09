@@ -38,7 +38,8 @@ window.PageManager = Backbone.Model.extend
             , 500
 
     addOrSwitchToPage: (uri) ->
-        found = @pageCollection.hasPage(uri)
+        reuse_pages = false
+        found = reuse_pages and @pageCollection.hasPage(uri)
 
         if found is false
             # new page

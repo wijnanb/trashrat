@@ -1,6 +1,8 @@
 window.App = Backbone.Model.extend
     defaults:
         startup_hash: undefined
+        street: {}
+        reminder: {}
 
     initialize: ->
         _.bindAll this

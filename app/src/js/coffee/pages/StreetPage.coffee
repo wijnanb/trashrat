@@ -12,6 +12,7 @@ window.StreetPageView = PageView.extend
         @zip_field = @$el.find('.zip-field')
         @street_button = @$el.find(".street-button")
         @nr_field = @$el.find('.nr-field')
+        @next = @$el.find('.next')
 
         @modal = @$el.find('#street-search-modal');
         @modal.css "-webkit-transform", "translate3d(0px,#{@page_height}px,0px)"
@@ -41,6 +42,8 @@ window.StreetPageView = PageView.extend
         @model.on 'change:selectedStreet', => 
             @updateEnabledFields()
             @street_button.val @model.get('selectedStreet').get('street')
+
+        @next.on 'click', => @nextPage()
 
         @updateEnabledFields()
 
@@ -104,6 +107,20 @@ window.StreetPageView = PageView.extend
         else
             @nr_field.prop 'disabled', 'disabled'
             @nr_field.addClass 'disabled'
+
+    nextPage: ->
+        if @model.get('selectedStreet')? and @nr_field.val() != ""
+            street = @model.get('selectedStreet').toJSON()
+            street.nr = @nr_field.val()
+
+            app.set
+                street: street
+
+            app.navigate('reminder')
+        else
+            console.error("form not filled in")
+                    
+       
 
                 
 

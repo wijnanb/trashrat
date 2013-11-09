@@ -23,6 +23,7 @@ window.PageCollection = Backbone.Collection.extend
 window.PageView = Backbone.View.extend
     className: "page"
     template: Templates.stub
+    context: {}
 
     initialize: () ->
         _.bindAll this
@@ -59,9 +60,12 @@ window.PageView = Backbone.View.extend
         @$el.toggleClass "active", @model.isActive()
 
     render: () ->
+        @context = @contextForTemplate()
+        @context.uri = @model.get('uri')
+
         contents = $("<div class='contents'></div>")
-        contents.append @template
-            uri: @model.get('uri')
+        contents.append @template(@context)
+            
         @$el.html contents
 
         @pageSpecificRender()
@@ -73,3 +77,7 @@ window.PageView = Backbone.View.extend
     # override this function in other pages
     pageSpecificRender: () ->
         return
+
+    # override this function in other pages
+    contextForTemplate: () ->
+        return {}
