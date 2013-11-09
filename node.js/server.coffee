@@ -7,6 +7,8 @@ nodeio = require 'node.io'
 log4js = require 'log4js'
 log4js.replaceConsole()
 
+Ivago = require('./importer').Ivago
+
 server = express()
 
 server.configure ->
@@ -47,7 +49,7 @@ server.get '/list/ivago/:zone/:year/:month', (req, res, next) ->
         run: ->
             @getHtml url, (err, $, data) =>
                 if err
-                    console.log err
+                    console.error err
                     res.send err, 500
                     return
 
@@ -65,12 +67,20 @@ server.get '/list/ivago/:zone/:year/:month', (req, res, next) ->
 
                         calendar.pickups.push pickup
                 catch error
-                    console.log "not available: #{month}/#{year}"
+                    console.error "not available: #{month}/#{year}"
 
                 res.send calendar
 
     scraper = new Scraper({timeout:10})
     scraper.run()
+
+
+
+
+server.get '/importer', (req, res, next) ->
+    Importer.ivago.run()
+
+
 
 
 console.log "http server running on port " + config.server_port

@@ -1,8 +1,7 @@
 window.PageManager = Backbone.Model.extend
     defaults:
         active: null
-        pageCollection: null
-
+        
     initialize: () ->
         _.bindAll this
 

@@ -1,13 +1,5 @@
 window.App = Backbone.Model.extend
     defaults:
-        router: undefined
-        navigation: undefined
-        navigationView: undefined
-        pageManager: undefined
-        pageManagerView: undefined
-        screenWidth: undefined
-        screenHeight: undefined
-        location: undefined
         startup_hash: undefined
 
     initialize: ->

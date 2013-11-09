@@ -1,8 +1,11 @@
 window.Page = Backbone.Model.extend
     defaults:
-        position: 1
+        position: 0
 
     initialize: () ->
+        firstpage = (app.pageManager.pageCollection.length is 0)
+        unless firstpage
+            @set position: 1
 
     isActive: () ->
         @get("position") is 0
