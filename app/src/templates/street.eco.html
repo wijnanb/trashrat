@@ -1,18 +1,27 @@
-<h2>Pick a street</h2>
-
-<div>
-    <input type="text" class="zip-field" placeholder="postcode" />
+<div class="step">
+    <div class="inner">
+        stap<br>
+        1/1
+    </div>
 </div>
 
-<div>
-    <input class="street-button" type="button" value="street" />
-</div>
+<h2 class="align-center">Bepaal jouw ophaalzone</h2>
 
-<div>
-    <input type="text" class="nr-field" placeholder="nr" />
-</div>
+<form>
+    <div>
+        <input type="text" class="zip-field" placeholder="Postcode" />
+    </div>
 
-<input class="next" type="button" value="next" />
+    <div>
+        <input class="street-button" type="button" value="Straat" />
+    </div>
+
+    <div>
+        <input type="text" class="nr-field" placeholder="Nr" />
+    </div>
+
+    <button class="next pull-right">volgende</button>
+</form>
 
 <div id="street-search-modal" class="modal">
     <input type="text" class="searchbox" placeholder="zoek je straat"/>

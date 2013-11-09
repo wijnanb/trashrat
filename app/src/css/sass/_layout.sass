@@ -4,7 +4,7 @@
 
 html
     height: 100%
-    background-color: #666
+    background-color: $desktop-background-color
     text-rendering: optimizeLegibility
 
 body
@@ -13,29 +13,67 @@ body
     width: 100%
     min-width: 300px
     margin: 0 auto
-    font-family: AvenirLight
-    font-size: 16px
+    font-family: $font-family
+    font-size: $font-base-size
+    color: $text-color
+
 
 input, textarea
-    font-family: AvenirLight
-    font-size: 16px
+    font-family: $font-family
+    font-size: 19px
+    color: $input-font-color
+    background: $white
+    border: none
+    display: block
+    padding: 12px 11px 9px
+    margin: 6px 0 15px
+    +user-select(auto)
+    +appearance(none)
+    +border-radius(0)
+    +box-sizing(border-box)
+    text-align: left
+
+button
+    background-color: $green
+    font-family: $font-family
+    font-size: 18px
+    color: $white
+    +user-select(auto)
+    +appearance(none)
+    +border-radius(0)
+    +box-sizing(border-box)
+    border: none
+    padding: 11px 14px 8px
+    text-transform: uppercase
+
+    &.next
+        padding-right: 34px
+        background-image: image-url('arrow@2x.png')
+        background-position: right 10px center
+        background-repeat: no-repeat
+        background-size: 7px 12px
+
+h2
+    text-transform: uppercase
+    margin-bottom: 30px
+
+.align-left
+    text-align: left
+.align-right
+    text-align: right
+.align-center
+    text-align: center
+.pull-right
+    float: right
+    +clearfix
 
 .navbar
-    height: 59px
+    height: 43px
     background-color: $green
     position: relative
 
-    .menu-button
-        width: 31px
-        height: 27px
-        background-image: image-url('menu-button.png')
-        display: inline-block
-        position: absolute
-        top: 17px
-        left: 12px
-
     .title
-        padding-top: 14px
+        padding-top: 2px
         color: $white
         font-family: AvenirBlack
         font-size: 25px
@@ -49,9 +87,6 @@ input, textarea
             position: relative
             top: 5px
 
-
-
-
 #app
     position: absolute
     top: 0
@@ -59,21 +94,20 @@ input, textarea
     bottom: 0
     left: 0
     overflow: hidden
-    background-color: $desktop-background
-
+    background-color: $background-color
 
 body.desktop #app 
-    max-width: 400px
+    max-width: 320px
     margin: 0 auto
 
 #pageManager 
     position: absolute
-    top: 59px
+    top: 43px
     right: 0
     bottom: 0
     left: 0
     overflow: hidden
-    background-color: $white
+    background-color: $background-color
 
 .page 
     position: absolute
@@ -87,16 +121,30 @@ body.desktop #app
     -webkit-overflow-scrolling: touch
     overflow-scrolling: touch
     @include transition-duration(400ms)
-    background-color: $white
+    background-color: $background-color
 
     .contents 
-        padding: 40px
+        padding: 20px 40px
     
 
     .loader 
         position: absolute
         top: 50%
         left: 50%
+
+.step
+    background-image: image-url('zeshoek@2x.png')
+    background-size: 74px 85px
+    width: 74px
+    height: 85px
+    text-align: center
+    font-size: 21px
+    font-family: AvenirBlack
+    text-transform: uppercase
+    margin: 0 auto 30px
+    .inner
+        position: relative
+        top: 25px
 
 .modal
     position: absolute
@@ -110,11 +158,22 @@ body.desktop #app
     -webkit-overflow-scrolling: touch
     overflow-scrolling: touch
     @include transition-duration(400ms)
-    background-color: $white
+    background-color: $background-color
     display: none
     opacity: 0
 
 .street.page
+    form
+        .zip-field, .street-button
+            width: 100%
+
+        .nr-field
+            width: 50px
+
+    .next
+        margin-top: 30px
+
+
     .searchbox
         display: block
         position: absolute
@@ -126,11 +185,10 @@ body.desktop #app
 
     .results
         width: 100%
-        margin-top: 42px
+        margin-top: 50px
         .search-result, .no-results
             padding: 20px 10px
-            margin: 3px 3px 0
-            background-color: #EEE
+            border-bottom: 3px solid $shadow-color
 
         .no-results
             text-align: center
