@@ -7,7 +7,7 @@ window.StreetPageView = PageView.extend
 
     pageSpecificRender: () ->
         _.bindAll this
-        @page_height = window.screenHeight - Fixes.headerHeight() - 42
+        @page_height = window.screenHeight
 
         @zip_field = @$el.find('.zip-field')
         @street_button = @$el.find(".street-button")
@@ -16,18 +16,23 @@ window.StreetPageView = PageView.extend
         @modal = @$el.find('#street-search-modal');
         @modal.css "-webkit-transform", "translate3d(0px,#{@page_height}px,0px)"
         
-        @searchbox = @modal.find('input.searchbox');
-        @searchbox.on 'keyup', _.debounce(@updateAutoComplete, 300)
+        @searchbox = @modal.find('.searchbox input');
+        @searchbox.on 'keyup', _.debounce(@updateAutoComplete, 150)
         @searchresults = @modal.find('.results');
 
         @street_button.on 'keydown', (event) => event.preventDefault()
         @street_button.on 'focus', (event) =>
-            @modal.show()
-            _.defer =>
-                @modal.css "-webkit-transform", "translate3d(0px,0px,0px)"
-                @modal.css "opacity", "1"
-
-                _.delay => @searchbox.focus()
+            event.preventDefault()
+            @street_button.blur()
+            _.delay =>
+                @modal.show()
+                @$el.scrollTop(0)
+                _.defer =>
+                    @modal.css "-webkit-transform", "translate3d(0px,0px,0px)"
+                    @modal.css "opacity", "1"
+                    @searchbox.focus()
+                    @$el.scrollTop(0)
+            , 0
 
         @zip_field.on 'change keyup', (event) => @updateEnabledFields()
         @street_button.on 'change keyup', (event) => @updateEnabledFields()

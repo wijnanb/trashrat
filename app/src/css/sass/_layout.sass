@@ -26,7 +26,6 @@ input, textarea
     border: none
     display: block
     padding: 12px 11px 9px
-    margin: 6px 0 15px
     +user-select(auto)
     +appearance(none)
     +border-radius(0)
@@ -165,26 +164,25 @@ body.desktop #app
 .street.page
     .zip-field, .street-button
         width: 100%
+        margin: 6px 0 15px
 
     .nr-field
-        width: 50px
+        width: 60px
+        margin: 6px 0 15px
 
     .next
         margin-top: 30px
-
+        margin-bottom: 50px
 
     .searchbox
         display: block
-        position: absolute
-        top: 0
-        left: 0
-        right: 0
-        z-index: 1
-        padding: 8px 6px
-
+        padding: 6px 6px
+        input
+            width: 100%
+            padding: 8px 6px
     .results
         width: 100%
-        margin-top: 50px
+        margin-top: 3px
         .search-result, .no-results
             padding: 20px 10px
             border-bottom: 3px solid $shadow-color
