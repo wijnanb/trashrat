@@ -1,43 +1,60 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
-        <meta charset="utf-8" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>TrashRat</title>
+        <meta name="description" content="Reminds you when it's time to take out the trash.">
         <meta name="format-detection" content="telephone=no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        
+        <meta name="apple-mobile-web-app-capable" content="yes"><!-- location is broken on iOS6 -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="TrashRat">
+
+        <!-- CSS: Includes -->
+        <link rel="stylesheet" href="css/main.css?v=20131110110759">
+
+        <!-- Javascript: Vendor Includes -->
+        <script src="js/vendors/jquery-2.0.3.js"></script>
+        <script src="js/vendors/underscore-1.4.4.js"></script>
+        <script src="js/vendors/backbone-1.0.0.js"></script>
+        <script src="js/vendors/async-0.2.5.js"></script>
+        <script src="js/vendors/scrollfix-0.1.js"></script>
+        <script src="js/vendors/fastclick-0.6.10.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+
+
+        <!-- all templates are rendered in this file (make) -->
+        <script src="js/templates.js"></script>
+
+        <!-- Application code -->
+        <script src="js/config.js"></script>
+        <script src="js/Fixes.js"></script>
+        <script src="js/Cache.js"></script>
+        <script src="js/Router.js"></script>
+        <script src="js/Page.js"></script>
+        <script src="js/PageManager.js"></script>
+        <script src="js/Street.js"></script>
+
+        <!-- pages -->
+        <script src="js/pages/StreetPage.js"></script>
+        <script src="js/pages/ReminderPage.js"></script>
+        <script src="js/pages/DataPage.js"></script>
+
+        <!-- boot the app -->
+        <script src="js/app.js"></script>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+        <div id="app">
+            <nav id="navbar" class="navbar fixed" role="navigation">
+                <div class="title">
+                    TrashRat
+                    <div class="trashrat-icon" />
+                </div>
+            </nav>
+            <div id="pageManager"></div>
+        </div> <!-- /#app -->
     </body>
 </html>

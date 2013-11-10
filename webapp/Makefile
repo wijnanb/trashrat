@@ -45,4 +45,11 @@ copy:
 	cp -r src/css/img www/css/img
 	cp -r src/fonts www
 	cp -r data www
+
+deploy:
+	@echo "\n# copy www folder to cordova folder"
+	cp -r www ../cordova/trashapp
+
+	@echo "\n# build iOS project"
+	cd ../cordova/trashapp; cordova build; cd -;
 	

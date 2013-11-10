@@ -103,5 +103,9 @@ window.App = Backbone.Model.extend
 
 
 # Bootstrap application on jQuery/Zepto ready  (use deviceReady for PhoneGap)
-$ ->
-    window.app = new App()
+if window.device 
+    $(document).on 'deviceready', ->
+        window.app = new App()
+else
+    $ ->
+        window.app = new App()
