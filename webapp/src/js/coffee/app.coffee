@@ -107,9 +107,7 @@ window.App = Backbone.Model.extend
         localStorage.setItem "reminder", JSON.stringify @get('reminder')
         console.log("saved street and reminder", JSON.parse localStorage["street"], JSON.parse localStorage["reminder"])
 
-        # Set reminders natively here!
-
-
+        @setNativeReminders()
 
     readSettingsFromLocalstorage: ->
         street = if localStorage["street"] then JSON.parse(localStorage["street"]) else {}
@@ -117,6 +115,13 @@ window.App = Backbone.Model.extend
 
         reminder = if localStorage["reminder"] then JSON.parse(localStorage["reminder"]) else {}
         if reminder? then @set reminder:reminder
+
+    setNativeReminders: ->
+        sector = app.get('street').sector
+
+        pickups = @streetManager.getPickupsForSector(sector)
+
+        
 
 
 

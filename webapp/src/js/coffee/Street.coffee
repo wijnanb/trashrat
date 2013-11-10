@@ -37,6 +37,7 @@ window.IvagoStreetCollection = Backbone.Collection.extend
 window.StreetManager = Backbone.Model.extend
     initialize: ->
         @streets = new IvagoStreetCollection
+        @pickups = new PickupCollection
 
     findStreetsWith: (query, zip) ->
         if zip
@@ -49,4 +50,6 @@ window.StreetManager = Backbone.Model.extend
         
         return results
 
+    getPickupsForSector: (sector) ->
+        @pickups.where({sector:sector})
         
