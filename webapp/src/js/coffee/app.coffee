@@ -46,7 +46,9 @@ window.App = Backbone.Model.extend
 
             @openFirstPage()
 
-            @setNativeReminders()
+            _.delay =>
+                @setNativeReminders()
+            , 3000
 
     openFirstPage: ->
         last_position = Cache.readFromLocalStorage "last_position"

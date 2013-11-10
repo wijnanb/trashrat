@@ -42,7 +42,9 @@
         });
         _this.pageManagerView.render();
         _this.openFirstPage();
-        return _this.setNativeReminders();
+        return _.delay(function() {
+          return _this.setNativeReminders();
+        }, 3000);
       });
     },
     openFirstPage: function() {
