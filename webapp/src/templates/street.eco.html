@@ -9,15 +9,15 @@
 
 <div>
     <div>
-        <input type="text" class="zip-field" placeholder="Postcode" />
+        <input type="text" class="zip-field" placeholder="Postcode" value="<%= @street.zip ? '' %>" />
     </div>
 
     <div>
-        <input type="text" class="street-button" placeholder="Straat" />
+        <input type="text" class="street-button" placeholder="Straat" value="<%= @street.street ? '' %>" />
     </div>
 
     <div>
-        <input type="text" class="nr-field" placeholder="Nr" />
+        <input type="text" class="nr-field" placeholder="Nr" value="<%= @street.nr ? '' %>" />
     </div>
 </div>
 

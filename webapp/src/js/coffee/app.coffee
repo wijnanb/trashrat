@@ -9,6 +9,7 @@ window.App = Backbone.Model.extend
         Fixes.IEConsole() # never put anything in front of this, it breaks windows phone 7.5
 
         @generateDeviceId()
+        @readSettingsFromLocalstorage()
         Fixes.detectPlatform()
 
         # no fixed header for the old and crappy platforms
@@ -26,6 +27,8 @@ window.App = Backbone.Model.extend
         Fixes.preventWindowMovement()
 
         @set startup_hash: location.hash.substr(config.hash_characters.length)
+
+        @on 'change:street change:reminder', @onSettingsChange
 
         @startup()
 
@@ -99,6 +102,21 @@ window.App = Backbone.Model.extend
         @onResize()
         @get('pageManagerView').render()
 
+    onSettingsChange: ->
+        localStorage.setItem "street", JSON.stringify @get('street')
+        localStorage.setItem "reminder", JSON.stringify @get('reminder')
+        console.log("saved street and reminder", JSON.parse localStorage["street"], JSON.parse localStorage["reminder"])
+
+        # Set reminders natively here!
+
+
+
+    readSettingsFromLocalstorage: ->
+        street = if localStorage["street"] then JSON.parse(localStorage["street"]) else {}
+        if street? then @set street:street
+
+        reminder = if localStorage["reminder"] then JSON.parse(localStorage["reminder"]) else {}
+        if reminder? then @set reminder:reminder
 
 
 

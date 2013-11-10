@@ -4,6 +4,9 @@ window.ReminderPageView = PageView.extend
     className: "reminder page"
     template: Templates.reminder
 
+    contextForTemplate: () ->
+        return app.toJSON()
+
     pageSpecificRender: () ->
         _.bindAll this
         @option_0 = @$el.find('.option-0')

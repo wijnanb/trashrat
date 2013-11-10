@@ -9,12 +9,12 @@
 
 <div class="group">
     <label>Dag:</label>
-    <div class="item selected option-0">
+    <div class="item <% if @reminder.day isnt 'previous_day': %>selected<% end %> option-0">
         <div class="legend">Dag van ophaling</div>
         <div class="checkbox"></div>
     </div>
 
-    <div class="item option-1">
+    <div class="item <% if @reminder.day is 'previous_day': %>selected<% end %> option-1">
         <div class="legend">1 dag voor ophaling</div>
         <div class="checkbox"></div>
     </div>
@@ -24,7 +24,7 @@
     <label>Tijdstip:</label>
     <div class="item selected">
         <div class="legend time">&nbsp;
-            <input class="timepicker" type="time" value="19:50:00" />
+            <input class="timepicker" type="time" value="<%= @reminder.time ? '07:00:00' %>" />
         </div>
         
         <div class="pencil"></div>

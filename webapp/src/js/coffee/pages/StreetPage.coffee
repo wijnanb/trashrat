@@ -5,6 +5,9 @@ window.StreetPageView = PageView.extend
     className: "street page"
     template: Templates.street
 
+    contextForTemplate: () ->
+        return app.toJSON()
+
     pageSpecificRender: () ->
         _.bindAll this
         @page_height = window.screenHeight
@@ -41,7 +44,8 @@ window.StreetPageView = PageView.extend
 
         @model.on 'change:selectedStreet', => 
             @updateEnabledFields()
-            @street_button.val @model.get('selectedStreet').get('street')
+            @street_button.val @model.get('selectedStreet').street
+        @model.set selectedStreet: app.get('street')
 
         @next.on 'click', => @nextPage()
 
@@ -78,7 +82,7 @@ window.StreetPageView = PageView.extend
         console.log "select #{street.get('street')}"
 
         @model.set
-            selectedStreet: street
+            selectedStreet: street.toJSON()
 
         @modal.css "-webkit-transform", "translate3d(0px,#{@page_height}px,0px)"
         @modal.css "opacity", "0"
@@ -110,7 +114,7 @@ window.StreetPageView = PageView.extend
 
     nextPage: ->
         if @model.get('selectedStreet')? and @nr_field.val() != ""
-            street = @model.get('selectedStreet').toJSON()
+            street = @model.get('selectedStreet')
             street.nr = @nr_field.val()
 
             app.set
