@@ -11,4 +11,12 @@
     <access origin="*" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="false" />
+
+    <feature name="NPReminders">
+        <param name="ios-package" value="NPReminders" />
+    </feature>
+
+    <feature name="Echo">
+        <param name="ios-package" value="Echo" />
+    </feature>
 </widget>

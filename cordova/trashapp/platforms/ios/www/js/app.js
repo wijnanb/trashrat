@@ -11,6 +11,7 @@
       _.bindAll(this);
       Fixes.IEConsole();
       this.generateDeviceId();
+      this.readSettingsFromLocalstorage();
       Fixes.detectPlatform();
       if (config.platform === 'wp' || config.platform === 'android2') {
         config.fixed_header = false;
@@ -26,6 +27,7 @@
       this.set({
         startup_hash: location.hash.substr(config.hash_characters.length)
       });
+      this.on('change:street change:reminder', this.onSettingsChange);
       this.startup();
       return _.defer(function() {
         _this.router = new Router();
@@ -39,7 +41,8 @@
           el: document.getElementById("pageManager")
         });
         _this.pageManagerView.render();
-        return _this.openFirstPage();
+        _this.openFirstPage();
+        return _this.setNativeReminders();
       });
     },
     openFirstPage: function() {
@@ -104,6 +107,52 @@
     repaint: function() {
       this.onResize();
       return this.get('pageManagerView').render();
+    },
+    onSettingsChange: function() {
+      localStorage.setItem("street", JSON.stringify(this.get('street')));
+      localStorage.setItem("reminder", JSON.stringify(this.get('reminder')));
+      console.log("saved street and reminder", JSON.parse(localStorage["street"], JSON.parse(localStorage["reminder"])));
+      return this.setNativeReminders();
+    },
+    readSettingsFromLocalstorage: function() {
+      var reminder, street;
+      street = localStorage["street"] ? JSON.parse(localStorage["street"]) : {};
+      if (street != null) {
+        this.set({
+          street: street
+        });
+      }
+      reminder = localStorage["reminder"] ? JSON.parse(localStorage["reminder"]) : {};
+      if (reminder != null) {
+        return this.set({
+          reminder: reminder
+        });
+      }
+    },
+    setNativeReminders: function() {
+      var echo, setReminders,
+        _this = this;
+      echo = function(str, callback) {
+        alert("doing echo");
+        console.log("doing echo");
+        console.error("simulating error");
+        return cordova.exec(callback, function(err) {
+          return callback('Nothing to echo.');
+        }, "Echo", "echo", [str]);
+      };
+      echo("echome", function(echoValue) {
+        return alert(echoValue === "echome");
+      });
+      setReminders = function(str) {
+        alert("doing setReminders");
+        return cordova.exec(callback, function(err) {
+          alert(err);
+          return callback('Nothing to echo.');
+        }, "NPReminders", "setReminders", [str]);
+      };
+      return setReminders("echo", function(echoValue) {
+        return alert(echoValue === "echo");
+      });
     }
   });
 

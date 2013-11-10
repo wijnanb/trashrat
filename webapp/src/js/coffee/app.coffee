@@ -46,6 +46,8 @@ window.App = Backbone.Model.extend
 
             @openFirstPage()
 
+            @setNativeReminders()
+
     openFirstPage: ->
         last_position = Cache.readFromLocalStorage "last_position"
         startup_hash = @get('startup_hash')
@@ -117,11 +119,32 @@ window.App = Backbone.Model.extend
         if reminder? then @set reminder:reminder
 
     setNativeReminders: ->
-        sector = app.get('street').sector
+        #sector = app.get('street').sector
+        #pickups = @streetManager.getPickupsForSector(sector)
 
-        pickups = @streetManager.getPickupsForSector(sector)
 
+        echo = (str, callback) ->
+            alert("doing echo");
+            console.log("doing echo");
+            console.error("simulating error");
+            cordova.exec callback, (err) ->
+                callback('Nothing to echo.')
+            , "Echo", "echo", [str]
         
+        echo "echome", (echoValue) ->
+            alert(echoValue == "echome")
+        
+
+
+        setReminders = (str) =>
+            alert("doing setReminders");
+            cordova.exec callback, (err) =>
+                alert(err)
+                callback('Nothing to echo.')
+            , "NPReminders", "setReminders", [str]
+
+        setReminders "echo", (echoValue) ->
+            alert(echoValue == "echo")
 
 
 

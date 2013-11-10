@@ -160,7 +160,25 @@ window.Templates = window.Templates || {};
   }
   (function() {
     (function() {
-      __out.push('<div class="step">\n    <div class="inner">\n        stap<br>\n        2/2\n    </div>\n</div>\n\n<h2 class="align-center">Reminder instellen</h2>\n\n<div class="group">\n    <label>Dag:</label>\n    <div class="item selected option-0">\n        <div class="legend">Dag van ophaling</div>\n        <div class="checkbox"></div>\n    </div>\n\n    <div class="item option-1">\n        <div class="legend">1 dag voor ophaling</div>\n        <div class="checkbox"></div>\n    </div>\n</div>\n\n<div class="group">\n    <label>Tijdstip:</label>\n    <div class="item selected">\n        <div class="legend time">&nbsp;\n            <input class="timepicker" type="time" value="19:50:00" />\n        </div>\n        \n        <div class="pencil"></div>\n    </div>\n</div>\n\n    <button class="next pull-right">Volgende</button>\n</form>');
+      var _ref;
+    
+      __out.push('<div class="step">\n    <div class="inner">\n        stap<br>\n        2/2\n    </div>\n</div>\n\n<h2 class="align-center">Reminder instellen</h2>\n\n<div class="group">\n    <label>Dag:</label>\n    <div class="item ');
+    
+      if (this.reminder.day !== 'previous_day') {
+        __out.push('selected');
+      }
+    
+      __out.push(' option-0">\n        <div class="legend">Dag van ophaling</div>\n        <div class="checkbox"></div>\n    </div>\n\n    <div class="item ');
+    
+      if (this.reminder.day === 'previous_day') {
+        __out.push('selected');
+      }
+    
+      __out.push(' option-1">\n        <div class="legend">1 dag voor ophaling</div>\n        <div class="checkbox"></div>\n    </div>\n</div>\n\n<div class="group">\n    <label>Tijdstip:</label>\n    <div class="item selected">\n        <div class="legend time">&nbsp;\n            <input class="timepicker" type="time" value="');
+    
+      __out.push(__sanitize((_ref = this.reminder.time) != null ? _ref : '07:00:00'));
+    
+      __out.push('" />\n        </div>\n        \n        <div class="pencil"></div>\n    </div>\n</div>\n\n    <button class="next pull-right">Volgende</button>\n</form>');
     
     }).call(this);
     
@@ -207,7 +225,21 @@ window.Templates = window.Templates || {};
   }
   (function() {
     (function() {
-      __out.push('<div class="step">\n    <div class="inner">\n        stap<br>\n        1/2\n    </div>\n</div>\n\n<h2 class="align-center">Bepaal jouw ophaalzone</h2>\n\n<div>\n    <div>\n        <input type="text" class="zip-field" placeholder="Postcode" />\n    </div>\n\n    <div>\n        <input type="text" class="street-button" placeholder="Straat" />\n    </div>\n\n    <div>\n        <input type="text" class="nr-field" placeholder="Nr" />\n    </div>\n</div>\n\n    <button class="next pull-right">Volgende</button>\n</form>\n\n<div id="street-search-modal" class="modal">\n    <div class="searchbox">\n        <input type="text" placeholder="Zoek je straat"/>\n    </div>\n    <div class="results"></div>\n</div>');
+      var _ref, _ref1, _ref2;
+    
+      __out.push('<div class="step">\n    <div class="inner">\n        stap<br>\n        1/2\n    </div>\n</div>\n\n<h2 class="align-center">Bepaal jouw ophaalzone</h2>\n\n<div>\n    <div>\n        <input type="text" class="zip-field" placeholder="Postcode" value="');
+    
+      __out.push(__sanitize((_ref = this.street.zip) != null ? _ref : ''));
+    
+      __out.push('" />\n    </div>\n\n    <div>\n        <input type="text" class="street-button" placeholder="Straat" value="');
+    
+      __out.push(__sanitize((_ref1 = this.street.street) != null ? _ref1 : ''));
+    
+      __out.push('" />\n    </div>\n\n    <div>\n        <input type="text" class="nr-field" placeholder="Nr" value="');
+    
+      __out.push(__sanitize((_ref2 = this.street.nr) != null ? _ref2 : ''));
+    
+      __out.push('" />\n    </div>\n</div>\n\n    <button class="next pull-right">Volgende</button>\n</form>\n\n<div id="street-search-modal" class="modal">\n    <div class="searchbox">\n        <input type="text" placeholder="Zoek je straat"/>\n    </div>\n    <div class="results"></div>\n</div>');
     
     }).call(this);
     

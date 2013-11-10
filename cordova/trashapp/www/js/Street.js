@@ -45,7 +45,8 @@
 
   window.StreetManager = Backbone.Model.extend({
     initialize: function() {
-      return this.streets = new IvagoStreetCollection;
+      this.streets = new IvagoStreetCollection;
+      return this.pickups = new PickupCollection;
     },
     findStreetsWith: function(query, zip) {
       var results, streets,
@@ -61,6 +62,11 @@
         return element.get('street').toLowerCase().indexOf(query.toLowerCase()) !== -1;
       });
       return results;
+    },
+    getPickupsForSector: function(sector) {
+      return this.pickups.where({
+        sector: sector
+      });
     }
   });
 

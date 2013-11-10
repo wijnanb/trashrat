@@ -5,6 +5,9 @@
   window.ReminderPageView = PageView.extend({
     className: "reminder page",
     template: Templates.reminder,
+    contextForTemplate: function() {
+      return app.toJSON();
+    },
     pageSpecificRender: function() {
       var _this = this;
       _.bindAll(this);

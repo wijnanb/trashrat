@@ -5,6 +5,9 @@
   window.StreetPageView = PageView.extend({
     className: "street page",
     template: Templates.street,
+    contextForTemplate: function() {
+      return app.toJSON();
+    },
     pageSpecificRender: function() {
       var _this = this;
       _.bindAll(this);
@@ -46,7 +49,10 @@
       });
       this.model.on('change:selectedStreet', function() {
         _this.updateEnabledFields();
-        return _this.street_button.val(_this.model.get('selectedStreet').get('street'));
+        return _this.street_button.val(_this.model.get('selectedStreet').street);
+      });
+      this.model.set({
+        selectedStreet: app.get('street')
       });
       this.next.on('click', function() {
         return _this.nextPage();
@@ -92,7 +98,7 @@
       var _this = this;
       console.log("select " + (street.get('street')));
       this.model.set({
-        selectedStreet: street
+        selectedStreet: street.toJSON()
       });
       this.modal.css("-webkit-transform", "translate3d(0px," + this.page_height + "px,0px)");
       this.modal.css("opacity", "0");
@@ -123,7 +129,7 @@
     nextPage: function() {
       var street;
       if ((this.model.get('selectedStreet') != null) && this.nr_field.val() !== "") {
-        street = this.model.get('selectedStreet').toJSON();
+        street = this.model.get('selectedStreet');
         street.nr = this.nr_field.val();
         app.set({
           street: street
