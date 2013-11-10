@@ -41,10 +41,7 @@
           el: document.getElementById("pageManager")
         });
         _this.pageManagerView.render();
-        _this.openFirstPage();
-        return _.delay(function() {
-          return _this.setNativeReminders();
-        }, 3000);
+        return _this.openFirstPage();
       });
     },
     openFirstPage: function() {
@@ -132,28 +129,21 @@
       }
     },
     setNativeReminders: function() {
-      var echo, setReminders,
-        _this = this;
-      echo = function(str, callback) {
-        alert("doing echo");
+      var data, echo, pickups, sector;
+      sector = app.get('street').sector;
+      pickups = this.streetManager.getPickupsForSector(sector);
+      data = {
+        sector: sector,
+        pickups: pickups
+      };
+      echo = function(data, callback) {
         console.log("doing echo");
-        console.error("simulating error");
         return cordova.exec(callback, function(err) {
           return callback('Nothing to echo.');
-        }, "Echo", "echo", [str]);
+        }, "Echo", "echo", [data]);
       };
-      echo("echome", function(echoValue) {
-        return alert(echoValue === "echome");
-      });
-      setReminders = function(str) {
-        alert("doing setReminders");
-        return cordova.exec(callback, function(err) {
-          alert(err);
-          return callback('Nothing to echo.');
-        }, "NPReminders", "setReminders", [str]);
-      };
-      return setReminders("echo", function(echoValue) {
-        return alert(echoValue === "echo");
+      return echo(data, function() {
+        return console.log("echoed");
       });
     }
   });

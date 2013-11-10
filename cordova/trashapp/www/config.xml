@@ -15,4 +15,8 @@
     <feature name="Echo">
         <param name="ios-package" value="Echo" />
     </feature>
+
+    <feature name="NPReminders">
+        <param name="ios-package" value="NPReminders" />
+    </feature>
 </widget>

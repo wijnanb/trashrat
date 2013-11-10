@@ -13,18 +13,21 @@
 
 - (void)echo:(CDVInvokedUrlCommand*)command
 {
-    NSLog(@"doing an echo");
+    NSLog(@"native echo plugin");
+    NSString* json = [command.arguments objectAtIndex:0];
+    NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
     
-    CDVPluginResult* pluginResult = nil;
-    NSString* echo = [command.arguments objectAtIndex:0];
+    NSError *error = nil;
+    NSDictionary* dict = [NSJSONSerialization
+                          JSONObjectWithData:data
+                          options:kNilOptions
+                          error:&error];
     
-    if (echo != nil && [echo length] > 0) {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:echo];
-    } else {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
-    }
+    NSArray* pickups = [dict objectForKey:@"pickups"];
     
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    NSLog(@"pickups: %@", pickups);
+    
+    if(error) { NSLog(@"JSON malformed: %@", error); }
 }
 
 @end

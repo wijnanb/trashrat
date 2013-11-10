@@ -30,7 +30,7 @@
 #import <Cordova/CDVCommandQueue.h>
 
 @interface MainViewController : CDVViewController
-- (void)setNotificationForDate:(NSDate*)date;
+- (void)setNotificationForItem:(NSDictionary*)item;
 - (void)scheduleNotificationWithItem:(NSDictionary *)item onDate:(NSDate*)notificationDate;
 @end
 

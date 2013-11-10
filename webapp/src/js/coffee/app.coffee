@@ -46,10 +46,6 @@ window.App = Backbone.Model.extend
 
             @openFirstPage()
 
-            _.delay =>
-                @setNativeReminders()
-            , 3000
-
     openFirstPage: ->
         last_position = Cache.readFromLocalStorage "last_position"
         startup_hash = @get('startup_hash')
@@ -121,33 +117,20 @@ window.App = Backbone.Model.extend
         if reminder? then @set reminder:reminder
 
     setNativeReminders: ->
-        #sector = app.get('street').sector
-        #pickups = @streetManager.getPickupsForSector(sector)
+        sector = app.get('street').sector
+        pickups = @streetManager.getPickupsForSector(sector)
 
+        data =
+            sector: sector
+            pickups: pickups
 
-        echo = (str, callback) ->
-            alert("doing echo");
+        echo = (data, callback) ->
             console.log("doing echo");
-            console.error("simulating error");
             cordova.exec callback, (err) ->
                 callback('Nothing to echo.')
-            , "Echo", "echo", [str]
+            , "Echo", "echo", [data]
         
-        echo "echome", (echoValue) ->
-            alert(echoValue == "echome")
-        
-
-
-        setReminders = (str) =>
-            alert("doing setReminders");
-            cordova.exec callback, (err) =>
-                alert(err)
-                callback('Nothing to echo.')
-            , "NPReminders", "setReminders", [str]
-
-        setReminders "echo", (echoValue) ->
-            alert(echoValue == "echo")
-
+        echo data, -> console.log("echoed")
 
 
 # Bootstrap application on jQuery/Zepto ready  (use deviceReady for PhoneGap)
