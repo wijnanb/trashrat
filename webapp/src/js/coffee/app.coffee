@@ -37,14 +37,14 @@ window.App = Backbone.Model.extend
             Backbone.history.start()
 
             @streetManager = new StreetManager
+            @streetManager.on 'ready', =>
+                @pageManager = new PageManager router: @router
+                @pageManagerView = new PageManagerView
+                    model: @pageManager
+                    el: document.getElementById("pageManager")
+                @pageManagerView.render()
 
-            @pageManager = new PageManager router: @router
-            @pageManagerView = new PageManagerView
-                model: @pageManager
-                el: document.getElementById("pageManager")
-            @pageManagerView.render()
-
-            @openFirstPage()
+                @openFirstPage()
 
     openFirstPage: ->
         last_position = Cache.readFromLocalStorage "last_position"

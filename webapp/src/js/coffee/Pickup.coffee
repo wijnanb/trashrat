@@ -22,7 +22,8 @@ window.PickupCollection = Backbone.Collection.extend
     initialize: ->
         @fetch()
         @on 'sync', => 
-            "ivago calendar synced"
+            console.log("ivago calendar synced")
+            @trigger 'ready'
 
     countTypes: ->
         types = {}

@@ -1,0 +1,11 @@
+<div class="pickup">
+    <div class="when">
+        <span class="day"><%= @day %></span>
+        <span class="date"><%= @date %></span>
+    </div>
+    <% for t in @types: %>
+    <div class="type <%= t %>">
+        <%= t %>
+    </div>
+    <% end %>
+</div>

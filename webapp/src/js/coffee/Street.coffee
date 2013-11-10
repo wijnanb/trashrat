@@ -26,7 +26,9 @@ window.IvagoStreetCollection = Backbone.Collection.extend
     url: "data/ivago/stratenlijst.json"
     initialize: ->
         @fetch()
-        @on 'sync', => "ivago streets synced"
+        @on 'sync', => 
+            console.log("ivago streets synced")
+            @trigger 'ready'
 
     parse: (response, options) ->
         results = []
@@ -37,7 +39,10 @@ window.IvagoStreetCollection = Backbone.Collection.extend
 window.StreetManager = Backbone.Model.extend
     initialize: ->
         @streets = new IvagoStreetCollection
-        @pickups = new PickupCollection
+        @streets.on 'ready', =>
+            @pickups = new PickupCollection
+            @pickups.on 'ready', =>
+                @trigger 'ready'
 
     findStreetsWith: (query, zip) ->
         if zip
@@ -51,5 +56,6 @@ window.StreetManager = Backbone.Model.extend
         return results
 
     getPickupsForSector: (sector) ->
-        @pickups.where({sector:sector})
+        today = +new Date()
+        _.filter @pickups.where({sector:sector}), (p) -> +p.get('date') >= today
         
