@@ -197,29 +197,23 @@ h2 {
 
 /* line 72, ../../src/css/sass/_layout.sass */
 .navbar {
-  height: 43px;
+  height: 51px;
   background-color: #01a984;
   position: relative;
 }
 /* line 77, ../../src/css/sass/_layout.sass */
-.navbar .title {
-  padding-top: 2px;
-  color: white;
-  font-family: AvenirBlack;
-  font-size: 25px;
-  text-align: center;
-}
-/* line 84, ../../src/css/sass/_layout.sass */
-.navbar .title .trashrat-icon {
-  width: 45px;
-  height: 28px;
-  background-image: url('../img/trashrat-icon.png?1378587910');
-  display: inline-block;
-  position: relative;
-  top: 5px;
+.navbar .logo {
+  background-image: url('../img/logo@2x.png?1384101698');
+  background-size: 159px 26px;
+  background-repeat: no-repeat;
+  background-position: left 0px top 20px;
+  width: 159px;
+  height: 26px;
+  padding-top: 20px;
+  margin: 0 auto;
 }
 
-/* line 92, ../../src/css/sass/_layout.sass */
+/* line 87, ../../src/css/sass/_layout.sass */
 #app {
   position: absolute;
   top: 0;
@@ -230,16 +224,16 @@ h2 {
   background-color: #313030;
 }
 
-/* line 101, ../../src/css/sass/_layout.sass */
+/* line 96, ../../src/css/sass/_layout.sass */
 body.desktop #app {
   max-width: 320px;
   margin: 0 auto;
 }
 
-/* line 105, ../../src/css/sass/_layout.sass */
+/* line 100, ../../src/css/sass/_layout.sass */
 #pageManager {
   position: absolute;
-  top: 43px;
+  top: 51px;
   right: 0;
   bottom: 0;
   left: 0;
@@ -247,7 +241,7 @@ body.desktop #app {
   background-color: #313030;
 }
 
-/* line 114, ../../src/css/sass/_layout.sass */
+/* line 109, ../../src/css/sass/_layout.sass */
 .page {
   position: absolute;
   top: 0;
@@ -265,18 +259,18 @@ body.desktop #app {
   transition-duration: 400ms;
   background-color: #313030;
 }
-/* line 128, ../../src/css/sass/_layout.sass */
+/* line 123, ../../src/css/sass/_layout.sass */
 .page .contents {
   padding: 20px 40px;
 }
-/* line 132, ../../src/css/sass/_layout.sass */
+/* line 127, ../../src/css/sass/_layout.sass */
 .page .loader {
   position: absolute;
   top: 50%;
   left: 50%;
 }
 
-/* line 137, ../../src/css/sass/_layout.sass */
+/* line 132, ../../src/css/sass/_layout.sass */
 .step {
   background-image: url('../img/zeshoek@2x.png?1384015100');
   background-size: 74px 85px;
@@ -288,13 +282,13 @@ body.desktop #app {
   text-transform: uppercase;
   margin: 0 auto 30px;
 }
-/* line 147, ../../src/css/sass/_layout.sass */
+/* line 142, ../../src/css/sass/_layout.sass */
 .step .inner {
   position: relative;
   top: 25px;
 }
 
-/* line 151, ../../src/css/sass/_layout.sass */
+/* line 146, ../../src/css/sass/_layout.sass */
 .modal {
   position: absolute;
   top: 0;
@@ -315,58 +309,58 @@ body.desktop #app {
   opacity: 0;
 }
 
-/* line 168, ../../src/css/sass/_layout.sass */
+/* line 163, ../../src/css/sass/_layout.sass */
 .street.page .zip-field, .street.page .street-button {
   width: 100%;
   margin: 6px 0 15px;
 }
-/* line 172, ../../src/css/sass/_layout.sass */
+/* line 167, ../../src/css/sass/_layout.sass */
 .street.page .nr-field {
   width: 60px;
   margin: 6px 0 15px;
 }
-/* line 176, ../../src/css/sass/_layout.sass */
+/* line 171, ../../src/css/sass/_layout.sass */
 .street.page .searchbox {
   display: block;
   padding: 6px 6px;
 }
-/* line 179, ../../src/css/sass/_layout.sass */
+/* line 174, ../../src/css/sass/_layout.sass */
 .street.page .searchbox input {
   width: 100%;
   padding: 8px 6px;
 }
-/* line 182, ../../src/css/sass/_layout.sass */
+/* line 177, ../../src/css/sass/_layout.sass */
 .street.page .results {
   width: 100%;
   margin-top: 3px;
 }
-/* line 185, ../../src/css/sass/_layout.sass */
+/* line 180, ../../src/css/sass/_layout.sass */
 .street.page .results .search-result, .street.page .results .no-results {
   padding: 20px 10px;
   border-bottom: 3px solid #242323;
 }
-/* line 189, ../../src/css/sass/_layout.sass */
+/* line 184, ../../src/css/sass/_layout.sass */
 .street.page .results .no-results {
   text-align: center;
 }
 
-/* line 194, ../../src/css/sass/_layout.sass */
+/* line 189, ../../src/css/sass/_layout.sass */
 .reminder.page .group {
   margin: 0 0 20px;
 }
-/* line 196, ../../src/css/sass/_layout.sass */
+/* line 191, ../../src/css/sass/_layout.sass */
 .reminder.page .group label {
   display: block;
   margin: 5px 0 6px;
 }
-/* line 199, ../../src/css/sass/_layout.sass */
+/* line 194, ../../src/css/sass/_layout.sass */
 .reminder.page .group .item {
   position: relative;
   width: 100%;
   background-color: #179676;
   cursor: pointer;
 }
-/* line 204, ../../src/css/sass/_layout.sass */
+/* line 199, ../../src/css/sass/_layout.sass */
 .reminder.page .group .item .legend {
   padding: 18px 14px 14px;
   background-color: #acacac;
@@ -374,7 +368,7 @@ body.desktop #app {
   font-size: 13px;
   text-transform: uppercase;
 }
-/* line 211, ../../src/css/sass/_layout.sass */
+/* line 206, ../../src/css/sass/_layout.sass */
 .reminder.page .group .item .legend.time input[type="time"] {
   position: absolute;
   top: 0;
@@ -390,7 +384,7 @@ body.desktop #app {
   padding: 13px 14px 9px;
   color: white;
 }
-/* line 228, ../../src/css/sass/_layout.sass */
+/* line 223, ../../src/css/sass/_layout.sass */
 .reminder.page .group .item .checkbox, .reminder.page .group .item .pencil {
   position: absolute;
   top: 0;
@@ -399,16 +393,16 @@ body.desktop #app {
   width: 62px;
   height: 100%;
 }
-/* line 236, ../../src/css/sass/_layout.sass */
+/* line 231, ../../src/css/sass/_layout.sass */
 .reminder.page .group .item.selected {
   background-color: #179676;
 }
-/* line 238, ../../src/css/sass/_layout.sass */
+/* line 233, ../../src/css/sass/_layout.sass */
 .reminder.page .group .item.selected .legend {
   color: white;
   background-color: #01a984;
 }
-/* line 241, ../../src/css/sass/_layout.sass */
+/* line 236, ../../src/css/sass/_layout.sass */
 .reminder.page .group .item.selected .checkbox {
   background-color: #179676;
   background-image: url('../img/checkmark@2x.png?1384025692');
@@ -416,7 +410,7 @@ body.desktop #app {
   background-repeat: no-repeat;
   background-position: right 21px top 13px;
 }
-/* line 247, ../../src/css/sass/_layout.sass */
+/* line 242, ../../src/css/sass/_layout.sass */
 .reminder.page .group .item.selected .pencil {
   background-color: #179676;
   background-image: url('../img/pencil@2x.png?1384025878');
@@ -425,7 +419,7 @@ body.desktop #app {
   background-position: right 21px top 12px;
 }
 
-/* line 255, ../../src/css/sass/_layout.sass */
+/* line 250, ../../src/css/sass/_layout.sass */
 .page .next {
   margin-top: 30px;
   margin-bottom: 50px;

@@ -1,7 +1,7 @@
 window.Fixes = (->
 
     statusBarHeight = 0
-    headerHeight = 43
+    headerHeight = 53
 
     return public_functions =
 

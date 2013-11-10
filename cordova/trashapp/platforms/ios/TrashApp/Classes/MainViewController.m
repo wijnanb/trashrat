@@ -103,8 +103,8 @@
 
 - (void)webViewDidFinishLoad:(UIWebView*)theWebView
 {
-    // Black base color for background matches the native apps
     theWebView.backgroundColor = [UIColor blackColor];
+    theWebView.suppressesIncrementalRendering = YES;
 
     NSLog(@"webViewDidFinishLoad");
     

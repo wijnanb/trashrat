@@ -3,7 +3,7 @@
   window.Fixes = (function() {
     var headerHeight, public_functions, statusBarHeight;
     statusBarHeight = 0;
-    headerHeight = 43;
+    headerHeight = 51;
     return public_functions = {
       headerHeight: function() {
         return headerHeight;

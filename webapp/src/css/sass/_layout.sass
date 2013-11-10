@@ -70,24 +70,39 @@ h2
     +clearfix
 
 .navbar
-    height: 43px
+    height: 53px
     background-color: $green
     position: relative
 
-    .title
-        padding-top: 2px
-        color: $white
-        font-family: AvenirBlack
-        font-size: 25px
-        text-align: center
+    .logo
+        background-image: image-url('logo@2x.png')
+        background-size: 159px 26px
+        background-repeat: no-repeat
+        background-position: left 0px top 20px
+        width: 159px
+        height: 26px
+        padding-top: 20px
+        margin: 0 auto
 
-        .trashrat-icon
-            width: 45px
-            height: 28px
-            background-image: image-url('trashrat-icon.png')
-            display: inline-block
-            position: relative
-            top: 5px
+    .settings
+        background-image: image-url('settings@2x.png')
+        background-size: 40px 40px
+        background-repeat: no-repeat
+        width: 40px
+        height: 40px
+        position: absolute
+        top: 15px
+        right: 5px
+
+    .back
+        background-image: image-url('back@2x.png')
+        background-size: 40px 40px
+        background-repeat: no-repeat
+        width: 40px
+        height: 40px
+        position: absolute
+        top: 16px
+        left: 0px
 
 #app
     position: absolute
@@ -104,7 +119,7 @@ body.desktop #app
 
 #pageManager 
     position: absolute
-    top: 43px
+    top: 53px
     right: 0
     bottom: 0
     left: 0
