@@ -30,7 +30,7 @@ window.ReminderPageView = PageView.extend
                 day: if @option_0.hasClass("selected") then "on_day" else "previous_day"
                 time: @timepicker.val()
 
-        app.navigate('data')
+        app.navigate('list')
 
 
         
