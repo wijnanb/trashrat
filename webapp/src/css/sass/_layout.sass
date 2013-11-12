@@ -273,7 +273,51 @@ body.desktop #app
         .street
             text-align: center
             background-color: $grey-tint-3
+            color: #fcfcfc
+            font-size: 13px
+            line-height: 18px
             padding: 8px
+        .pickup
+            color: #fcfcfc
+            .when
+                text-transform: uppercase
+                padding: 25px 0 15px
+                font-size: 19px
+                text-align: center
+                .day
+                    font-family: AvenirBlack
+            &.color-0
+                background-color: $grey-tint-0
+                color: #313030
+            &.color-1
+                background-color: $grey-tint-1
+            &.color-2
+                background-color: $grey-tint-2
+            &.color-3
+                background-color: $grey-tint-3
+
+            .types
+                padding-bottom: 28px
+                text-align: center
+                .type
+                    padding: 6px 16px 3px
+                    display: inline-block
+                    color: #301503
+                    text-transform: uppercase
+                    line-height: 18px
+                    &.GFT
+                        background-color: $color-GFT
+                    &.Rest    
+                        background-color: $color-rest
+                    &.Papier
+                        background-color: $color-papier
+                    &.PMD
+                        background-color: $color-PMD
+                    &.Grof
+                        background-color: $color-grof
+                    &.Glas
+                        color: $color-glas
+                        background-color: $white
 
 
 .page

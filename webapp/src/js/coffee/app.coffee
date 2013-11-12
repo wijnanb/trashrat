@@ -36,6 +36,9 @@ window.App = Backbone.Model.extend
             @router = new Router()
             Backbone.history.start()
 
+            @navigationView = new NavigationView
+                el: document.getElementById('navbar')
+
             @streetManager = new StreetManager
             @streetManager.on 'ready', =>
                 @pageManager = new PageManager router: @router

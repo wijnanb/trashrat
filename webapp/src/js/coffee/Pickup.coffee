@@ -11,6 +11,13 @@ window.Pickup = Backbone.Model.extend
         date = new Date(response.datum.replace(/(\d{2})\/(\d{2})\/(\d{4})/,'$3-$2-$1 0:00:00'))
         types = response.fractie.split('/')
 
+        types.forEach (t) =>
+            # papier & karton -> papier
+            if t is 'Papier & karton ' then t = 'Papier'
+
+            # remove spaces
+            t = t.replace(/\s/g, '')
+
         return attributes =
             date: date
             types: types
