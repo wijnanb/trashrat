@@ -9,14 +9,16 @@ window.Pickup = Backbone.Model.extend
 
     parse: (response, options) ->
         date = new Date(response.datum.replace(/(\d{2})\/(\d{2})\/(\d{4})/,'$3-$2-$1 0:00:00'))
-        types = response.fractie.split('/')
-
-        types.forEach (t) =>
+        
+        types = []
+        response.fractie.split('/').forEach (t) =>
             # papier & karton -> papier
             if t is 'Papier & karton ' then t = 'Papier'
 
             # remove spaces
-            t = t.replace(/\s/g, '')
+            t = t.split(' ').join('')
+
+            types.push t
 
         return attributes =
             date: date
@@ -41,5 +43,6 @@ window.PickupCollection = Backbone.Collection.extend
 
     parse: (response, options) ->
         results = []
-        response["IVAGO-Inzamelkalender"].forEach (element) => results.push Pickup.prototype.parse(element)
+        response["IVAGO-Inzamelkalender"].forEach (element) => 
+            results.push Pickup.prototype.parse(element)
         return results
